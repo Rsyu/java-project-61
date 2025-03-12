@@ -6,6 +6,13 @@ plugins {
     java
     checkstyle
 }
+checkstyle {
+    toolVersion = "10.12.4" // Используйте актуальную версию
+    configFile = file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
+    isIgnoreFailures = false // Прерывать сборку при ошибках Checkstyle
+    isShowViolations = true // Показывать ошибки в консоли
+}
+
 application {
     mainClass.set("hexlet.code.App")
 }
