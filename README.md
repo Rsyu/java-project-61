@@ -13,5 +13,8 @@ https://asciinema.org/a/Ha93vE2E8vjIbsFZAXsy4zGtA
 ## Демонстрация игры "Арифметическая прогрессия"
  https://asciinema.org/a/601r4U7xuZRj72P8FFiLCYodJ
 
+## Демонстрация игры "Простое ли число?"
+ https://asciinema.org/a/g0XJHp4qAz2mvpukjU4uagUSq
+
 
 

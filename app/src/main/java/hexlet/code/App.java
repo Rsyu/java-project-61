@@ -4,6 +4,7 @@ import hexlet.code.games.EvenGame;
 import hexlet.code.games.CalcGame;
 import hexlet.code.games.GCDGame;
 import hexlet.code.games.ProgressionGame;
+import hexlet.code.games.PrimeGame;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
 
         System.out.print("Your choice: ");
@@ -27,6 +29,7 @@ public class App {
             case "3" -> CalcGame.start();
             case "4" -> GCDGame.start();
             case "5" -> ProgressionGame.start(); // Добавили арифметическую прогрессию
+            case "6" -> PrimeGame.start();
             case "0" -> System.out.println("Goodbye!");
             default -> System.out.println("Invalid choice.");
         }
