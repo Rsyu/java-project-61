@@ -10,4 +10,8 @@ https://asciinema.org/a/5x2hcxs8YUBRKB4BVx89NZILE
 ## Демонстрация игры "НОД"
 https://asciinema.org/a/Ha93vE2E8vjIbsFZAXsy4zGtA
 
+## Демонстрация игры "Арифметическая прогрессия"
+ https://asciinema.org/a/601r4U7xuZRj72P8FFiLCYodJ
+
+
 
