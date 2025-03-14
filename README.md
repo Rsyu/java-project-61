@@ -7,4 +7,7 @@
 ## Демонстрация игры "Калькулятор"
 https://asciinema.org/a/5x2hcxs8YUBRKB4BVx89NZILE
 
+## Демонстрация игры "НОД"
+https://asciinema.org/a/Ha93vE2E8vjIbsFZAXsy4zGtA
+
 

@@ -1,77 +1,37 @@
 package hexlet.code.games;
 
-import java.util.Random;
-import java.util.Scanner;
+import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class CalcGame {
+    private static final int ROUNDS_COUNT = 3;
+    private static final String GAME_RULE = "What is the result of the expression?";
 
-    public static void playCalcGame() {
-        Scanner scanner = new Scanner(System.in);
-
-        // Приветствие
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String name = scanner.nextLine();
-        System.out.println("Hello, " + name + "!");
-        System.out.println("What is the result of the expression?");
-
-        // Игровой процесс
-        int correctAnswersCount = 0;
-        Random random = new Random();
-
-        while (correctAnswersCount < 3) {
-            // Генерация случайного выражения
-            int num1 = random.nextInt(50);
-            int num2 = random.nextInt(50);
-            char operator = generateRandomOperator();
-
-            // Формируем вопрос
-            String question = num1 + " " + operator + " " + num2;
-            int correctAnswer = calculate(num1, num2, operator);
-
-            System.out.println("Question: " + question);
-            System.out.print("Your answer: ");
-            String userAnswer = scanner.nextLine().trim();
-
-            // Проверка ответа
-            try {
-                if (Integer.parseInt(userAnswer) == correctAnswer) {
-                    System.out.println("Correct!");
-                    correctAnswersCount++;
-                } else {
-                    System.out.println("'" + userAnswer + "' is wrong answer ;(. "
-                            + "Correct answer was '" + correctAnswer + "'.");
-                    System.out.println("Let's try again, " + name + "!");
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input! Please enter a number.");
-                return;
-            }
-        }
-
-        // Победа
-        System.out.println("Congratulations, " + name + "!");
-    }
-
-    // Генерация случайного оператора
-    private static char generateRandomOperator() {
+    public static void start() { // <-- Тут тоже проверяем, что метод public
+        String[][] roundsData = new String[ROUNDS_COUNT][2];
         char[] operators = {'+', '-', '*'};
-        Random random = new Random();
-        return operators[random.nextInt(operators.length)];
+
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            int number1 = Utils.getRandomNumber(1, 20);
+            int number2 = Utils.getRandomNumber(1, 20);
+            char operator = operators[Utils.getRandomNumber(0, 2)];
+
+            String question = number1 + " " + operator + " " + number2;
+            String correctAnswer = String.valueOf(calculate(number1, number2, operator));
+
+            roundsData[i][0] = question;
+            roundsData[i][1] = correctAnswer;
+        }
+
+        Engine.run(GAME_RULE, roundsData);
     }
 
-    // Вычисление результата выражения
     private static int calculate(int num1, int num2, char operator) {
-        switch (operator) {
-            case '+':
-                return num1 + num2;
-            case '-':
-                return num1 - num2;
-            case '*':
-                return num1 * num2;
-            default:
-                throw new IllegalArgumentException("Unsupported operator: " + operator);
-        }
+        return switch (operator) {
+            case '+' -> num1 + num2;
+            case '-' -> num1 - num2;
+            case '*' -> num1 * num2;
+            default -> throw new RuntimeException("Unknown operator: " + operator);
+        };
     }
 }

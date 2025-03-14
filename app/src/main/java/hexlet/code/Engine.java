@@ -1,35 +1,37 @@
 package hexlet.code;
 
-import hexlet.code.games.CalcGame;
-import hexlet.code.games.EvenGame;
-
 import java.util.Scanner;
 
 public class Engine {
+    public static final int ROUNDS_COUNT = 3;
 
-    // Метод для запуска игры по имени
-    public static void startGame(String gameName) {
+    public static void run(String gameRule, String[][] roundsData) {
         Scanner scanner = new Scanner(System.in);
 
-        // Приветствие
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
 
-        // В зависимости от игры, вызываем соответствующий метод
-        switch (gameName) {
-            case "greet":
-                Cli.greet();
-                break;
-            case "even":
-                EvenGame.playEvenGame();
-                break;
-            case "calc":
-                CalcGame.playCalcGame();
-                break;
-            default:
-                System.out.println("Invalid game.");
+        System.out.println(gameRule);
+
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            String question = roundsData[i][0];
+            String correctAnswer = roundsData[i][1];
+
+            System.out.println("Question: " + question);
+            System.out.print("Your answer: ");
+            String userAnswer = scanner.nextLine();
+
+            if (userAnswer.equals(correctAnswer)) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("Let's try again, " + name + "!");
+                return;
+            }
         }
+
+        System.out.println("Congratulations, " + name + "!");
     }
 }
