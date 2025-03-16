@@ -12,3 +12,6 @@ clean:
 run-dist:
 	./gradlew installDist
 	./build/install/app/bin/app
+
+lint:
+	./gradlew check
