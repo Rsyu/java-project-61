@@ -4,19 +4,17 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class CalcGame {
-    private static final int ROUNDS_COUNT = 3;
     private static final int MAX_NUMBER = 20; // Исправлено
-    private static final int OPERATORS_COUNT = 2; //  Исправлено
     private static final String GAME_RULE = "What is the result of the expression?";
 
     public static void start() {
-        String[][] roundsData = new String[ROUNDS_COUNT][2];
+        String[][] roundsData = new String[Engine.ROUNDS_COUNT][2];
         char[] operators = {'+', '-', '*'};
 
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
             int number1 = Utils.getRandomNumber(1, MAX_NUMBER);
             int number2 = Utils.getRandomNumber(1, MAX_NUMBER);
-            char operator = operators[Utils.getRandomNumber(0, OPERATORS_COUNT)];
+            char operator = operators[Utils.getRandomNumber(0, operators.length - 1)];
 
             String question = number1 + " " + operator + " " + number2;
             String correctAnswer = String.valueOf(calculate(number1, number2, operator));
